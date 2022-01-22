@@ -6,7 +6,6 @@ import com.jjeanjacques.controlefinanceiro.exception.NotFoundRecipe;
 import com.jjeanjacques.controlefinanceiro.repository.ReceitaRepository;
 import com.jjeanjacques.controlefinanceiro.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
@@ -41,6 +40,20 @@ public class ReceitaServiceImpl implements ReceitaService {
                 .build();
 
         return receitaRepository.save(receitaEntity);
+    }
+
+    @Override
+    public void updateReceita(Long id, ReceitaDTO receita) {
+        isUniqueInTheMonth(receita);
+
+        var receitaEntity = receitaRepository.findById(id)
+                .orElseThrow(() -> new NotFoundRecipe("Recipe id " + id + " not found"));
+
+        receitaEntity.setDescricao(receita.getDescricao() != null ? receita.getDescricao() : receitaEntity.getDescricao());
+        receitaEntity.setData(receita.getData() != null ? receita.getData() : receitaEntity.getData());
+        receitaEntity.setValor(receita.getValor() != null ? receita.getValor() : receitaEntity.getValor());
+
+        receitaRepository.save(receitaEntity);
     }
 
     private void isUniqueInTheMonth(ReceitaDTO receita) throws InvalidParameterException {

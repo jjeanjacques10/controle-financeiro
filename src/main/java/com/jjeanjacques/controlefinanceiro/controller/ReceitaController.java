@@ -39,4 +39,10 @@ public class ReceitaController {
                 .buildAndExpand(receitaEntity.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateReceita(@PathVariable Long id, @RequestBody ReceitaDTO receita) {
+        receitaService.updateReceita(id, receita);
+        return ResponseEntity.ok().build();
+    }
 }
