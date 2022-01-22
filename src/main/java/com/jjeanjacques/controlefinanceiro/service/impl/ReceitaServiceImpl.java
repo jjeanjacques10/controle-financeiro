@@ -9,12 +9,18 @@ import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ReceitaServiceImpl implements ReceitaService {
 
     @Autowired
     private ReceitaRepository receitaRepository;
+
+    @Override
+    public List<Receita> findAll() {
+        return receitaRepository.findAll();
+    }
 
     @Override
     public Receita createReceita(ReceitaDTO receita) {
