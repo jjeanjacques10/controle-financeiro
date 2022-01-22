@@ -6,6 +6,71 @@
 	},
 	"item": [
 		{
+			"name": "Get All Receitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/receitas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receitas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 22 Jan 2022 04:57:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\n        \"valor\": 2000,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    },\n    {\n        \"id\": 2,\n        \"descricao\": \"Mi Band\",\n        \"valor\": 200,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    }\n]"
+				}
+			]
+		},
+		{
 			"name": "Create Receitas",
 			"request": {
 				"method": "POST",
@@ -139,37 +204,81 @@
 			]
 		},
 		{
-			"name": "Get All Receitas",
+			"name": "Get By Id Recipe",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/receitas",
+					"raw": "http://localhost:8080/receitas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"receitas"
+						"receitas",
+						"1"
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "Get All",
+					"name": "Not Found",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/receitas",
+							"raw": "http://localhost:8080/receitas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"receitas"
+								"receitas",
+								"1"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 22 Jan 2022 05:18:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"method\": \"GET\",\n    \"path\": \"/receitas/1\",\n    \"errorMessage\": \"Unexpected error\",\n    \"errorDetail\": \"Recipe id 1 not found\"\n}"
+				},
+				{
+					"name": "Get By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"1"
 							]
 						}
 					},
@@ -187,7 +296,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Sat, 22 Jan 2022 04:57:34 GMT"
+							"value": "Sat, 22 Jan 2022 05:18:25 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -199,7 +308,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\n        \"valor\": 2000,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    },\n    {\n        \"id\": 2,\n        \"descricao\": \"Mi Band\",\n        \"valor\": 200,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    }\n]"
+					"body": "{\n    \"id\": 1,\n    \"descricao\": \"Mi Band\",\n    \"valor\": 200,\n    \"data\": \"2022-01-21T16:11:26.485\"\n}"
 				}
 			]
 		}

@@ -2,9 +2,11 @@ package com.jjeanjacques.controlefinanceiro.service.impl;
 
 import com.jjeanjacques.controlefinanceiro.controller.dto.ReceitaDTO;
 import com.jjeanjacques.controlefinanceiro.entity.Receita;
+import com.jjeanjacques.controlefinanceiro.exception.NotFoundRecipe;
 import com.jjeanjacques.controlefinanceiro.repository.ReceitaRepository;
 import com.jjeanjacques.controlefinanceiro.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
@@ -20,6 +22,12 @@ public class ReceitaServiceImpl implements ReceitaService {
     @Override
     public List<Receita> findAll() {
         return receitaRepository.findAll();
+    }
+
+    @Override
+    public Receita findById(Long idReceita) throws NotFoundRecipe {
+        return receitaRepository.findById(idReceita)
+                .orElseThrow(() -> new NotFoundRecipe("Recipe id " + idReceita + " not found"));
     }
 
     @Override

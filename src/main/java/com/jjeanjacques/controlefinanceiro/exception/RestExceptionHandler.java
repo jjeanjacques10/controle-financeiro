@@ -3,6 +3,7 @@ package com.jjeanjacques.controlefinanceiro.exception;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,5 +36,18 @@ public class RestExceptionHandler {
             detail.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
         return new ResponseException(request, "Invalid Arguments", detail);
+    }
+
+    @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResponseException badRequestException(HttpServletRequest request,
+                                                 HttpRequestMethodNotSupportedException exception) {
+        return new ResponseException(request, "Method not supported", exception.getMessage());
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseException handleException(HttpServletRequest request, Exception exception) {
+        return new ResponseException(request, "Unexpected error", exception.getMessage());
     }
 }

@@ -22,8 +22,13 @@ public class ReceitaController {
     @GetMapping()
     public ResponseEntity<List<Receita>> getAll() {
         List<Receita> receitas = receitaService.findAll();
-
         return ResponseEntity.ok(receitas);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Receita> getById(@PathVariable Long id) {
+        Receita receita = receitaService.findById(id);
+        return ResponseEntity.ok(receita);
     }
 
     @PostMapping()
