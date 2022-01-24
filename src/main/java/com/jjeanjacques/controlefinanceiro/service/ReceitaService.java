@@ -14,4 +14,6 @@ public interface ReceitaService {
     Receita findById(Long idReceita);
 
     void updateReceita(Long id, ReceitaDTO receita);
+
+    void delete(Receita receita);
 }

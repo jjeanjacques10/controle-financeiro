@@ -45,4 +45,16 @@ public class ReceitaController {
         receitaService.updateReceita(id, receita);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteReceita(@PathVariable Long id) {
+        var receita = receitaService.findById(id);
+
+        if (receita == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        receitaService.delete(receita);
+        return ResponseEntity.noContent().build();
+    }
 }

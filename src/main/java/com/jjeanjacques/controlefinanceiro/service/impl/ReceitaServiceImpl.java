@@ -56,6 +56,11 @@ public class ReceitaServiceImpl implements ReceitaService {
         receitaRepository.save(receitaEntity);
     }
 
+    @Override
+    public void delete(Receita receita) {
+        receitaRepository.delete(receita);
+    }
+
     private void isUniqueInTheMonth(ReceitaDTO receita) throws InvalidParameterException {
         var exist = receitaRepository.getByDescricao(receita.getDescricao());
         if (exist != null && LocalDateTime.now().getMonth() == exist.getData().getMonth()) {
