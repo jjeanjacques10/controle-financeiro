@@ -6,26 +6,11 @@
 	},
 	"item": [
 		{
-			"name": "Get All Receitas",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/receitas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"receitas"
-					]
-				}
-			},
-			"response": [
+			"name": "Receitas",
+			"item": [
 				{
-					"name": "Get All",
-					"originalRequest": {
+					"name": "Get All Receitas",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -40,71 +25,16 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 22 Jan 2022 04:57:34 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\n        \"valor\": 2000,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    },\n    {\n        \"id\": 2,\n        \"descricao\": \"Mi Band\",\n        \"valor\": 200,\n        \"data\": \"2022-01-21T16:11:26.485\"\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Create Receitas",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\r\n    \"valor\": 2000.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/receitas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"receitas"
-					]
-				}
-			},
-			"response": [
 				{
-					"name": "Invalid Arguments",
-					"originalRequest": {
+					"name": "Create Receitas",
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\r\n    \"valor\": 2000.00\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Batataw\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -123,38 +53,36 @@
 							]
 						}
 					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Fri, 21 Jan 2022 23:23:30 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"method\": \"POST\",\n    \"path\": \"/receitas\",\n    \"errorMessage\": \"invalidArguments\",\n    \"errorDetail\": {\n        \"data\": \"Data cannot be null\"\n    }\n}"
+					"response": []
 				},
 				{
-					"name": "Created",
-					"originalRequest": {
-						"method": "POST",
+					"name": "Get By Id Recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update By Id Recipe",
+					"request": {
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Compra de Xiaomi Poco X3 Pro\",\r\n    \"valor\": 2000.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Mi Band 6\",\r\n    \"valor\": 210.00\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,153 +90,160 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/receitas",
+							"raw": "http://localhost:8080/receitas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"receitas"
+								"receitas",
+								"1"
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "plain",
-					"header": [
-						{
-							"key": "Location",
-							"value": "http://localhost:8080/receitas/1"
-						},
-						{
-							"key": "Content-Length",
-							"value": "0"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 22 Jan 2022 04:56:43 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"1"
+							]
 						}
-					],
-					"cookie": [],
-					"body": null
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "Get By Id Recipe",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/receitas/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"receitas",
-						"1"
-					]
-				}
-			},
-			"response": [
+			"name": "Despesas",
+			"item": [
 				{
-					"name": "Not Found",
-					"originalRequest": {
+					"name": "Get All Despesas",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/receitas/1",
+							"raw": "http://localhost:8080/despesas",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"receitas",
-								"1"
+								"despesas"
 							]
 						}
 					},
-					"status": "Internal Server Error",
-					"code": 500,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 22 Jan 2022 05:18:01 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "close"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"method\": \"GET\",\n    \"path\": \"/receitas/1\",\n    \"errorMessage\": \"Unexpected error\",\n    \"errorDetail\": \"Recipe id 1 not found\"\n}"
+					"response": []
 				},
 				{
-					"name": "Get By Id",
-					"originalRequest": {
-						"method": "GET",
+					"name": "Create Receitas",
+					"request": {
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Internet\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/receitas/1",
+							"raw": "http://localhost:8080/despesas",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"receitas",
-								"1"
+								"despesas"
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 22 Jan 2022 05:18:25 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
+					"response": []
+				},
+				{
+					"name": "Get By Id Despesas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"3"
+							]
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 1,\n    \"descricao\": \"Mi Band\",\n    \"valor\": 200,\n    \"data\": \"2022-01-21T16:11:26.485\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update By Id Expense",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Mi Band 6\",\r\n    \"valor\": 2210.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/despesas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
