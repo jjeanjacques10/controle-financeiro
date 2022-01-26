@@ -6,10 +6,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: 'mangadb'
+      MYSQL_DATABASE: 'financasdb'
       MYSQL_USER: 'jjuser'
-      MYSQL_PASSWORD: 'manga-jj-password'
-      MYSQL_ROOT_PASSWORD: 'manga-jj-password'
+      MYSQL_PASSWORD: 'passwordfinancas'
+      MYSQL_ROOT_PASSWORD: 'passwordfinancas'
     volumes:
       - my-db:/var/lib/mysql
 
