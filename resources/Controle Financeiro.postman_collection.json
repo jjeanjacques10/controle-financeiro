@@ -28,7 +28,7 @@
 					"response": []
 				},
 				{
-					"name": "Create Receitas",
+					"name": "Create Receita",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -56,7 +56,7 @@
 					"response": []
 				},
 				{
-					"name": "Get By Id Recipe",
+					"name": "Get By Id Receita",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -76,7 +76,7 @@
 					"response": []
 				},
 				{
-					"name": "Update By Id Recipe",
+					"name": "Update By Id Receita",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -105,7 +105,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete",
+					"name": "Delete Receita",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -149,13 +149,13 @@
 					"response": []
 				},
 				{
-					"name": "Create Receitas",
+					"name": "Create Despesa",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Internet\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Intern33ets3\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\",\r\n    \"categoria\": 6\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -177,7 +177,7 @@
 					"response": []
 				},
 				{
-					"name": "Get By Id Despesas",
+					"name": "Get By Id Despesa",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -197,7 +197,7 @@
 					"response": []
 				},
 				{
-					"name": "Update By Id Expense",
+					"name": "Update By Id  Despesa",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -226,7 +226,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete",
+					"name": "Delete Despesa",
 					"request": {
 						"method": "DELETE",
 						"header": [],

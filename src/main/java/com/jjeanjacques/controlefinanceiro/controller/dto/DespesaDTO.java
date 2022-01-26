@@ -17,5 +17,6 @@ public class DespesaDTO {
     private BigDecimal valor;
     @NotNull(message = "Data cannot be null")
     private LocalDateTime data;
+    private Long categoria;
 
 }
