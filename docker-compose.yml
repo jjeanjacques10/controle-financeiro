@@ -3,13 +3,13 @@ services:
   database:
     image: mysql:5.7
     restart: always
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: 'mangadb'
       MYSQL_USER: 'jjuser'
       MYSQL_PASSWORD: 'manga-jj-password'
       MYSQL_ROOT_PASSWORD: 'manga-jj-password'
-      ports:
-        - 3306:3306
     volumes:
       - my-db:/var/lib/mysql
 
