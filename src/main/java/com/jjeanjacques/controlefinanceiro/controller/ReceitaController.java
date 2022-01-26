@@ -20,8 +20,8 @@ public class ReceitaController {
     private ReceitaService receitaService;
 
     @GetMapping()
-    public ResponseEntity<List<Receita>> getAll() {
-        List<Receita> receitas = receitaService.findAll();
+    public ResponseEntity<List<Receita>> getAll(@RequestParam(required = false) String descricao) {
+        List<Receita> receitas = receitaService.findAll(descricao);
         return ResponseEntity.ok(receitas);
     }
 

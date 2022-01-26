@@ -19,7 +19,10 @@ public class ReceitaServiceImpl implements ReceitaService {
     private ReceitaRepository receitaRepository;
 
     @Override
-    public List<Receita> findAll() {
+    public List<Receita> findAll(String descricao) {
+        if (descricao != null) {
+            return receitaRepository.findByDescricaoContaining(descricao);
+        }
         return receitaRepository.findAll();
     }
 

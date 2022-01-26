@@ -9,7 +9,7 @@ public interface ReceitaService {
 
     Receita createReceita(ReceitaDTO receita);
 
-    List<Receita> findAll();
+    List<Receita> findAll(String descricao);
 
     Receita findById(Long idReceita);
 
