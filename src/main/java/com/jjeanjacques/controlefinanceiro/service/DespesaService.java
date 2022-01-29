@@ -8,7 +8,7 @@ public interface DespesaService {
 
     DespesaDTO create(DespesaDTO receita);
 
-    List<DespesaDTO> findAll();
+    List<DespesaDTO> findAll(String descricao);
 
     DespesaDTO findById(Long idDespesa);
 

@@ -8,7 +8,9 @@ import com.jjeanjacques.controlefinanceiro.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReceitaServiceImpl implements ReceitaService {
@@ -20,21 +22,27 @@ public class ReceitaServiceImpl implements ReceitaService {
     private RecursoServiceImpl recursoService;
 
     @Override
-    public List<Receita> findAll(String descricao) {
+    public List<ReceitaDTO> findAll(String descricao) {
+        var receitas = new ArrayList<Receita>();
+
         if (descricao != null) {
-            return receitaRepository.findByDescricaoContaining(descricao);
+            receitas.addAll(receitaRepository.findByDescricaoContaining(descricao));
+        } else {
+            receitas.addAll(receitaRepository.findAll());
         }
-        return receitaRepository.findAll();
+
+        return receitas.stream().map(ReceitaDTO::new).collect(Collectors.toList());
     }
 
     @Override
-    public Receita findById(Long idReceita) throws NotFoundRecipe {
+    public ReceitaDTO findById(Long idReceita) throws NotFoundRecipe {
         return receitaRepository.findById(idReceita)
+                .map(ReceitaDTO::new)
                 .orElseThrow(() -> new NotFoundRecipe("Recipe id " + idReceita + " not found"));
     }
 
     @Override
-    public Receita createReceita(ReceitaDTO receita) {
+    public ReceitaDTO createReceita(ReceitaDTO receita) {
         recursoService.isUniqueInTheMonth(receita.getDescricao(), receita.getData().getMonthValue(), receitaRepository);
 
         var receitaEntity = Receita.builder()
@@ -42,7 +50,8 @@ public class ReceitaServiceImpl implements ReceitaService {
                 .valor(receita.getValor())
                 .data(receita.getData())
                 .build();
-        return receitaRepository.save(receitaEntity);
+
+        return new ReceitaDTO(receitaRepository.save(receitaEntity));
     }
 
     @Override
@@ -60,7 +69,9 @@ public class ReceitaServiceImpl implements ReceitaService {
     }
 
     @Override
-    public void delete(Receita receita) {
+    public void delete(Long id) {
+        var receita = receitaRepository.findById(id)
+                .orElseThrow(() -> new NotFoundRecipe("Recipe id " + id + " not found"));
         receitaRepository.delete(receita);
     }
 

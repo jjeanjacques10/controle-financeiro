@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface DespesaRepository extends JpaRepository<Despesa, Long>, RecursoRepository {
 
     @Query(value = "SELECT * FROM despesa WHERE descricao = :descricao AND month(data) = :month LIMIT 1", nativeQuery = true)
     Despesa getByDescricaoAndMonth(String descricao, int month);
+
+    List<Despesa> findByDescricaoContaining(String descricao);
 
 }

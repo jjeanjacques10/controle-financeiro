@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/receitas",
+							"raw": "http://localhost:8080/receitas?descricao=Batata",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -26,8 +26,7 @@
 							"query": [
 								{
 									"key": "descricao",
-									"value": "Batata",
-									"disabled": true
+									"value": "Batata"
 								}
 							]
 						}
@@ -142,7 +141,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/despesas",
+							"raw": "http://localhost:8080/despesas?descricao=Mi Ba",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -150,6 +149,12 @@
 							"port": "8080",
 							"path": [
 								"despesas"
+							],
+							"query": [
+								{
+									"key": "descricao",
+									"value": "Mi Ba"
+								}
 							]
 						}
 					},

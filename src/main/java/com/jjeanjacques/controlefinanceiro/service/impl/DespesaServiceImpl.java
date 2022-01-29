@@ -9,6 +9,7 @@ import com.jjeanjacques.controlefinanceiro.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,8 +23,15 @@ public class DespesaServiceImpl implements DespesaService {
     private RecursoServiceImpl recursoService;
 
     @Override
-    public List<DespesaDTO> findAll() {
-        var despesas = despesaRepository.findAll();
+    public List<DespesaDTO> findAll(String descricao) {
+        var despesas = new ArrayList<Despesa>();
+
+        if (descricao != null) {
+            despesas.addAll(despesaRepository.findByDescricaoContaining(descricao));
+        } else {
+            despesas.addAll(despesaRepository.findAll());
+        }
+
         return despesas.stream().map(DespesaDTO::new).collect(Collectors.toList());
     }
 

@@ -1,7 +1,6 @@
 package com.jjeanjacques.controlefinanceiro.controller;
 
 import com.jjeanjacques.controlefinanceiro.controller.dto.ReceitaDTO;
-import com.jjeanjacques.controlefinanceiro.entity.Receita;
 import com.jjeanjacques.controlefinanceiro.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +19,14 @@ public class ReceitaController {
     private ReceitaService receitaService;
 
     @GetMapping()
-    public ResponseEntity<List<Receita>> getAll(@RequestParam(required = false) String descricao) {
-        List<Receita> receitas = receitaService.findAll(descricao);
+    public ResponseEntity<List<ReceitaDTO>> getAll(@RequestParam(required = false) String descricao) {
+        List<ReceitaDTO> receitas = receitaService.findAll(descricao);
         return ResponseEntity.ok(receitas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Receita> getById(@PathVariable Long id) {
-        Receita receita = receitaService.findById(id);
+    public ResponseEntity<ReceitaDTO> getById(@PathVariable Long id) {
+        ReceitaDTO receita = receitaService.findById(id);
         return ResponseEntity.ok(receita);
     }
 
@@ -48,13 +47,7 @@ public class ReceitaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReceita(@PathVariable Long id) {
-        var receita = receitaService.findById(id);
-
-        if (receita == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        receitaService.delete(receita);
+        receitaService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

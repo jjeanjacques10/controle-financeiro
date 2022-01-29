@@ -19,8 +19,8 @@ public class DespesaController {
     private DespesaService despesaService;
 
     @GetMapping
-    public ResponseEntity<List<DespesaDTO>> getAll() {
-        var despesas = despesaService.findAll();
+    public ResponseEntity<List<DespesaDTO>> getAll(@RequestParam(required = false) String descricao) {
+        var despesas = despesaService.findAll(descricao);
         return ResponseEntity.ok(despesas);
     }
 
