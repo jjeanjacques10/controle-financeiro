@@ -78,4 +78,10 @@ public class DespesaServiceImpl implements DespesaService {
         despesaRepository.delete(despesa);
     }
 
+    @Override
+    public List<DespesaDTO> findByMonth(int ano, int mes) {
+        List<Despesa> despesas = despesaRepository.findByMonth(ano, mes);
+        return despesas.stream().map(DespesaDTO::new).collect(Collectors.toList());
+    }
+
 }

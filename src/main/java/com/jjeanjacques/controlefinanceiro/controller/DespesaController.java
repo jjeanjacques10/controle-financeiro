@@ -50,4 +50,10 @@ public class DespesaController {
         despesaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{ano}/{mes}")
+    public ResponseEntity<List<DespesaDTO>> despesasByMonth(@PathVariable int ano, @PathVariable int mes) {
+        List<DespesaDTO> despesas = despesaService.findByMonth(ano, mes);
+        return ResponseEntity.ok(despesas);
+    }
 }

@@ -34,6 +34,27 @@
 					"response": []
 				},
 				{
+					"name": "Get Receitas By Month",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/2022/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"2022",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create Receita",
 					"request": {
 						"method": "POST",
@@ -155,6 +176,27 @@
 									"key": "descricao",
 									"value": "Mi Ba"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Despesa By Month",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/2022/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"2022",
+								"2"
 							]
 						}
 					},

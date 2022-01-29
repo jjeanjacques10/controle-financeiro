@@ -15,4 +15,6 @@ public interface DespesaService {
     void update(Long id, DespesaDTO receita);
 
     void delete(Long receita);
+
+    List<DespesaDTO> findByMonth(int ano, int mes);
 }
