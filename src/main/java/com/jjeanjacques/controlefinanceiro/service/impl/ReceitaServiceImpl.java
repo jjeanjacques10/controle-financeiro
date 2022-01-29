@@ -75,4 +75,10 @@ public class ReceitaServiceImpl implements ReceitaService {
         receitaRepository.delete(receita);
     }
 
+    @Override
+    public List<ReceitaDTO> findByMonth(int ano, int mes) {
+        List<Receita> receitas = receitaRepository.findByMonth(ano, mes);
+        return receitas.stream().map(ReceitaDTO::new).collect(Collectors.toList());
+    }
+
 }

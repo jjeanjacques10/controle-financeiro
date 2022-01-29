@@ -15,4 +15,6 @@ public interface ReceitaService {
     void updateReceita(Long id, ReceitaDTO receita);
 
     void delete(Long id);
+
+    List<ReceitaDTO> findByMonth(int ano, int mes);
 }

@@ -50,4 +50,10 @@ public class ReceitaController {
         receitaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{ano}/{mes}")
+    public ResponseEntity<List<ReceitaDTO>> receitasByMonth(@PathVariable int ano, @PathVariable int mes) {
+        List<ReceitaDTO> receitas = receitaService.findByMonth(ano, mes);
+        return ResponseEntity.ok(receitas);
+    }
 }
