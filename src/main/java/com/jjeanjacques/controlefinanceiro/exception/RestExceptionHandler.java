@@ -26,7 +26,8 @@ public class RestExceptionHandler {
         return new ResponseException(request, "Not found", exception.getMessage());
     }
 
-    @ExceptionHandler(value = {MethodArgumentNotValidException.class, InvalidParameterException.class})
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class, InvalidParameterException.class,
+            InvalidParameterException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseException badRequestException(HttpServletRequest request,
                                                  MethodArgumentNotValidException exception) {

@@ -8,8 +8,6 @@ import com.jjeanjacques.controlefinanceiro.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.InvalidParameterException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,6 +15,9 @@ public class ReceitaServiceImpl implements ReceitaService {
 
     @Autowired
     private ReceitaRepository receitaRepository;
+
+    @Autowired
+    private RecursoServiceImpl recursoService;
 
     @Override
     public List<Receita> findAll(String descricao) {
@@ -34,20 +35,19 @@ public class ReceitaServiceImpl implements ReceitaService {
 
     @Override
     public Receita createReceita(ReceitaDTO receita) {
-        isUniqueInTheMonth(receita);
+        recursoService.isUniqueInTheMonth(receita.getDescricao(), receita.getData().getMonthValue(), receitaRepository);
 
         var receitaEntity = Receita.builder()
                 .descricao(receita.getDescricao())
                 .valor(receita.getValor())
                 .data(receita.getData())
                 .build();
-
         return receitaRepository.save(receitaEntity);
     }
 
     @Override
     public void updateReceita(Long id, ReceitaDTO receita) {
-        isUniqueInTheMonth(receita);
+        recursoService.isUniqueInTheMonth(receita.getDescricao(), receita.getData().getMonthValue(), receitaRepository);
 
         var receitaEntity = receitaRepository.findById(id)
                 .orElseThrow(() -> new NotFoundRecipe("Recipe id " + id + " not found"));
@@ -62,13 +62,6 @@ public class ReceitaServiceImpl implements ReceitaService {
     @Override
     public void delete(Receita receita) {
         receitaRepository.delete(receita);
-    }
-
-    private void isUniqueInTheMonth(ReceitaDTO receita) throws InvalidParameterException {
-        var exist = receitaRepository.getByDescricao(receita.getDescricao());
-        if (exist != null && LocalDateTime.now().getMonth() == exist.getData().getMonth()) {
-            throw new InvalidParameterException("Duplicated item - Descricao already exists in this month");
-        }
     }
 
 }

@@ -1,34 +1,26 @@
 package com.jjeanjacques.controlefinanceiro.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.jjeanjacques.controlefinanceiro.enums.Categoria;
+import lombok.*;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
 @Entity
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "despesa")
-public class Despesa implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Despesa extends Recurso {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String descricao;
-    private BigDecimal valor;
-    private LocalDateTime data;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @Builder
+    public Despesa(Long id, String descricao, BigDecimal valor, LocalDateTime data, Categoria categoria) {
+        super(id, descricao, valor, data);
+        this.categoria = categoria;
+    }
 }

@@ -1,8 +1,6 @@
 package com.jjeanjacques.controlefinanceiro.controller;
 
 import com.jjeanjacques.controlefinanceiro.controller.dto.DespesaDTO;
-import com.jjeanjacques.controlefinanceiro.entity.Despesa;
-import com.jjeanjacques.controlefinanceiro.entity.Despesa;
 import com.jjeanjacques.controlefinanceiro.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +19,14 @@ public class DespesaController {
     private DespesaService despesaService;
 
     @GetMapping
-    public ResponseEntity<List<Despesa>> getAll() {
+    public ResponseEntity<List<DespesaDTO>> getAll() {
         var despesas = despesaService.findAll();
         return ResponseEntity.ok(despesas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Despesa> getById(@PathVariable Long id) {
-        Despesa despesa = despesaService.findById(id);
+    public ResponseEntity<DespesaDTO> getById(@PathVariable Long id) {
+        DespesaDTO despesa = despesaService.findById(id);
         return ResponseEntity.ok(despesa);
     }
 
@@ -42,20 +40,14 @@ public class DespesaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateDespesa(@PathVariable Long id, @RequestBody DespesaDTO despesa) {
+    public ResponseEntity<String> updateDespesa(@PathVariable Long id, @Valid @RequestBody DespesaDTO despesa) {
         despesaService.update(id, despesa);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteDespesa(@PathVariable Long id) {
-        var despesa = despesaService.findById(id);
-
-        if (despesa == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        despesaService.delete(despesa);
+    public ResponseEntity<String> deleteDespesa(@PathVariable Long id) {
+        despesaService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

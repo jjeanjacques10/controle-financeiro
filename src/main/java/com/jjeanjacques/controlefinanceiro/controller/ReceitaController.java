@@ -41,13 +41,13 @@ public class ReceitaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateReceita(@PathVariable Long id, @RequestBody ReceitaDTO receita) {
+    public ResponseEntity<String> updateReceita(@PathVariable Long id, @Valid @RequestBody ReceitaDTO receita) {
         receitaService.updateReceita(id, receita);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteReceita(@PathVariable Long id) {
+    public ResponseEntity<String> deleteReceita(@PathVariable Long id) {
         var receita = receitaService.findById(id);
 
         if (receita == null) {

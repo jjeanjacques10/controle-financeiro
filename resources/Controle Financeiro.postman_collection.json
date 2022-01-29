@@ -22,6 +22,13 @@
 							"port": "8080",
 							"path": [
 								"receitas"
+							],
+							"query": [
+								{
+									"key": "descricao",
+									"value": "Batata",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -34,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Batataw\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\"\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Salario\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -61,7 +68,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/receitas/1",
+							"raw": "http://localhost:8080/receitas/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -69,7 +76,7 @@
 							"port": "8080",
 							"path": [
 								"receitas",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -82,7 +89,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Mi Band 6\",\r\n    \"valor\": 210.00\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Salario 2\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,7 +97,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/receitas/1",
+							"raw": "http://localhost:8080/receitas/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -98,7 +105,7 @@
 							"port": "8080",
 							"path": [
 								"receitas",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -155,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Intern33ets3\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-01-21T16:11:26.485\",\r\n    \"categoria\": 6\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Inglês\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-02-21T16:11:26.485\",\r\n    \"categoria\": \"EDUCACAO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -182,7 +189,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/despesas/3",
+							"raw": "http://localhost:8080/despesas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -190,7 +197,7 @@
 							"port": "8080",
 							"path": [
 								"despesas",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -203,7 +210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Mi Band 6\",\r\n    \"valor\": 2210.00\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Mi Babnd\",\r\n    \"valor\": 2030.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -211,7 +218,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/despesas/3",
+							"raw": "http://localhost:8080/despesas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -219,7 +226,7 @@
 							"port": "8080",
 							"path": [
 								"despesas",
-								"3"
+								"1"
 							]
 						}
 					},

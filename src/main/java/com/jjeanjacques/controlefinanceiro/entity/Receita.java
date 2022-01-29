@@ -1,29 +1,21 @@
 package com.jjeanjacques.controlefinanceiro.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "receita")
-public class Receita implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Receita extends Recurso {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String descricao;
-    private BigDecimal valor;
-    private LocalDateTime data;
+    @Builder
+    public Receita(Long id, String descricao, BigDecimal valor, LocalDateTime data) {
+        super(id, descricao, valor, data);
+    }
 
 }
