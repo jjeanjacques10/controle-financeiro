@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/receitas?descricao=Batata",
+							"raw": "http://localhost:8080/receitas?descricao=Salario",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -26,7 +26,7 @@
 							"query": [
 								{
 									"key": "descricao",
-									"value": "Batata"
+									"value": "Salario"
 								}
 							]
 						}
@@ -61,7 +61,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Salario\",\r\n    \"valor\": 200.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Bônus Final de Ano\",\r\n    \"valor\": 5200.00,\r\n    \"data\": \"2022-12-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,7 +162,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/despesas?descricao=Mi Ba",
+							"raw": "http://localhost:8080/despesas",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -174,7 +174,8 @@
 							"query": [
 								{
 									"key": "descricao",
-									"value": "Mi Ba"
+									"value": "Mi Ba",
+									"disabled": true
 								}
 							]
 						}
@@ -257,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"Mi Babnd\",\r\n    \"valor\": 2030.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
+							"raw": "{\r\n    \"descricao\": \"Mi Band 6\",\r\n    \"valor\": 2030.00,\r\n    \"data\": \"2022-04-21T16:11:26.485\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -293,6 +294,32 @@
 							"port": "8080",
 							"path": [
 								"despesas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resumo",
+			"item": [
+				{
+					"name": "Get Resumo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/resumo/2022/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"resumo",
+								"2022",
 								"2"
 							]
 						}

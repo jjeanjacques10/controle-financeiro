@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "receita")
+@Table(name = "Receita")
 public class Receita extends Recurso {
 
     @Builder

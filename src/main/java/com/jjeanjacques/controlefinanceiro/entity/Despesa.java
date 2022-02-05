@@ -1,7 +1,10 @@
 package com.jjeanjacques.controlefinanceiro.entity;
 
 import com.jjeanjacques.controlefinanceiro.enums.Categoria;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,9 +16,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "despesa")
+@Table(name = "Despesa")
 public class Despesa extends Recurso {
 
+    //@Enumerated(EnumType.STRING)
     private Categoria categoria;
 
     @Builder
