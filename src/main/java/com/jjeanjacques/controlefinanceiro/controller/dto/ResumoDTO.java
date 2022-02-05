@@ -21,6 +21,6 @@ public class ResumoDTO {
     private BigDecimal saldoFinal;
 
     @JsonProperty("categorias")
-    private List<CategoriaResumoDTO> categoriaResumo;
+    private List<DespesaCategoriaResumoDTO> categoriaResumo;
 
 }

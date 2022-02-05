@@ -17,8 +17,8 @@ public class ResumoController {
     ResumoService resumoService;
 
     @GetMapping("/{ano}/{mes}")
-    public ResponseEntity<ResumoDTO> getResumo(@PathVariable int ano,
-                                               @PathVariable int mes) {
+    public ResponseEntity<ResumoDTO> getResumo(@PathVariable Integer ano,
+                                               @PathVariable Integer mes) {
         var resumo = resumoService.getResumo(ano, mes);
         return ResponseEntity.ok(resumo);
     }

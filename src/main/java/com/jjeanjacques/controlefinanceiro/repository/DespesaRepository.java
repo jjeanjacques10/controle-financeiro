@@ -1,6 +1,6 @@
 package com.jjeanjacques.controlefinanceiro.repository;
 
-import com.jjeanjacques.controlefinanceiro.controller.dto.CategoriaResumoDTO;
+import com.jjeanjacques.controlefinanceiro.controller.dto.DespesaCategoriaResumoDTO;
 import com.jjeanjacques.controlefinanceiro.entity.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,8 +23,8 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long>, Recurso
     @Query(value = "SELECT SUM(d.valor) FROM Despesa d WHERE year(d.data) = :year AND month(d.data) = :month")
     BigDecimal getTotalDespesas(int year, int month);
 
-    @Query(value = "SELECT new com.jjeanjacques.controlefinanceiro.controller.dto.CategoriaResumoDTO(d.categoria, sum(d.valor)) FROM Despesa d " +
+    @Query(value = "SELECT new com.jjeanjacques.controlefinanceiro.controller.dto.DespesaCategoriaResumoDTO(d.categoria, sum(d.valor)) FROM Despesa d " +
             "WHERE year(data) = :ano AND month(data) = :mes " +
             "GROUP BY d.categoria")
-    List<CategoriaResumoDTO> getTotalByCategoria(int ano, int mes);
+    List<DespesaCategoriaResumoDTO> getTotalByCategoria(int ano, int mes);
 }

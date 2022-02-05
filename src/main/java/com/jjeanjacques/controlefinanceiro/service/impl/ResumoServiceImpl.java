@@ -1,6 +1,6 @@
 package com.jjeanjacques.controlefinanceiro.service.impl;
 
-import com.jjeanjacques.controlefinanceiro.controller.dto.CategoriaResumoDTO;
+import com.jjeanjacques.controlefinanceiro.controller.dto.DespesaCategoriaResumoDTO;
 import com.jjeanjacques.controlefinanceiro.controller.dto.ResumoDTO;
 import com.jjeanjacques.controlefinanceiro.repository.DespesaRepository;
 import com.jjeanjacques.controlefinanceiro.repository.ReceitaRepository;
@@ -25,7 +25,7 @@ public class ResumoServiceImpl implements ResumoService {
         BigDecimal totalReceitas = receitaRepository.getTotalReceitas(ano, mes);
         BigDecimal totalDespesas = despesaRepository.getTotalDespesas(ano, mes);
         BigDecimal saldoFinal = totalReceitas.subtract(totalDespesas);
-        List<CategoriaResumoDTO> totalByCategoria = despesaRepository.getTotalByCategoria(ano, mes);
+        List<DespesaCategoriaResumoDTO> totalByCategoria = despesaRepository.getTotalByCategoria(ano, mes);
 
         return ResumoDTO.builder()
                 .totalReceitas(totalReceitas)
